@@ -1,5 +1,5 @@
 ---
-- hosts: ansible-demo1
+- hosts: ansible-demo1,ansible-demo2
   tasks:
     - name: 
       win_shell: hostname
