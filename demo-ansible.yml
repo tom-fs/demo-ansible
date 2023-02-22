@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
+- hosts: ansible-demo1
   tasks:
     - name: 
-      debug: 
-        msg: "It works!"
+      win_shell: hostname
