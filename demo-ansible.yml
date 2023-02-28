@@ -1,5 +1,6 @@
 ---
 - hosts: ansible-demo1
   tasks:
-    - name: 
-      win_shell: hostname
+    - name: Install 7zip and use a file version for the installation check
+      win_package:
+        path: https://www.7-zip.org/a/7z2201-x64.exe
