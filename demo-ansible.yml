@@ -1,7 +1,11 @@
 ---
 - hosts: ansible-demo1
   tasks:
-    - name: Install 7zip and use a file version for the installation check
-      win_package:
-        path: https://www.7-zip.org/a/7z2201-x64.exe
-        arguments: /S
+    - name: Install filebeat service
+      ansible.windows.win_service:
+        name: filebeat
+        display_name: filebeat
+        path: "`C:\\Program Files\\Filebeat\\filebeat.exe`" --environment=windows_service -c `"C:\\Program Files\\Filebeat\\filebeat.yml`" --path.home `"C:\\Program Files\\Filebeat`" --path.data `"$env:PROGRAMDATA\\filebeat`" --path.logs `"$env:PROGRAMDATA\\filebeat\logs`" -E logging.files.redirect_stderr=true
+        state: stopped
+        start_mode: delayed
+
